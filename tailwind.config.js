@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-import typography from '@tailwindcss/typography';
-import daisyui from 'daisyui';
 import dimtheme from 'daisyui/src/theming/themes';
 export default {
     content: [
+        './node_modules/daisyui/**/*.js',
         './index.html',
         './src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}',
     ],
@@ -16,42 +15,9 @@ export default {
             },
         },
     },
-    plugins: [typography, daisyui],
+    plugins: [require('@tailwindcss/typography'), require('daisyui')],
     daisyui: {
         themes: [
-            'nord',
-            'light',
-            'dim',
-            'dima',
-            'dark',
-            'cupcake',
-            'bumblebee',
-            'emerald',
-            'corporate',
-            'synthwave',
-            'retro',
-            'cyberpunk',
-            'valentine',
-            'halloween',
-            'garden',
-            'forest',
-            'aqua',
-            'lofi',
-            'pastel',
-            'fantasy',
-            'wireframe',
-            'black',
-            'luxury',
-            'dracula',
-            'cmyk',
-            'autumn',
-            'business',
-            'acid',
-            'lemonade',
-            'night',
-            'coffee',
-            'sunset',
-            'winter',
             {
                 dim: {
                     ...dimtheme['dim'],
@@ -59,7 +25,7 @@ export default {
                 },
             },
         ], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-        darkTheme: 'lemonade', // name of one of the included themes for dark mode
+        darkTheme: 'dim', // name of one of the included themes for dark mode
         styled: true, // include daisyUI colors and design decisions for all components
         base: true, // applies background color and foreground color for root element by default
         utils: true, // adds responsive and modifier utility classes

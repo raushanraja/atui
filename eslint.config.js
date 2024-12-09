@@ -1,4 +1,3 @@
-import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettierConfig from 'eslint-config-prettier';
@@ -30,7 +29,6 @@ export default [
                 project: ['./tsconfig.json'],
                 tsconfigRootDir: import.meta.dirname,
             },
-            globals: globals.browser,
         },
     },
 ];
