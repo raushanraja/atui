@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-display: block;
+        font-family: "Figtree";
+        src: url("/fonts/Figtree-Regular.woff2");
+    }
+
+    @font-face {
+        font-family: 'Raleway';
+        src: url("/fonts/Raleway.ttf");
+    }
+
+    @font-face {
+        font-family: 'Raleway';
+        font-style: italic;
+        font-display: block;
+        src: url("/fonts/Raleway-Italic.ttf");
+    }
+
+    @font-face {
+        font-family: 'NotoSans';
+        font-display: block;
+        src: url("/fonts/NotoSans.ttf");
+    }
+
+    @font-face {
+        font-family: 'NotoSans';
+        font-style: italic;
+        font-display: block;
+        src: url("/fonts/NotoSanf-Italic.ttf");
+    }
+}
