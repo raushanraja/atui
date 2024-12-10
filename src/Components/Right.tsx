@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { createEffect, createSignal, onCleanup, Setter } from 'solid-js';
 import { IoSendOutline } from 'solid-icons/io';
+import { commandStore } from '../Stores/Command';
+import { send_command } from '../Hooks/Command';
 
 enum Sender {
     'System',
@@ -73,13 +76,14 @@ function LogView(props: MessageProps) {
 }
 
 function CommandInput(props: CommandInputPorps) {
-    const handleChange = (e: Event) => {
+    const handleChange = async (e: Event) => {
         e.preventDefault();
         const htmlformelement = e.target as HTMLFormElement;
         const formdata = new FormData(htmlformelement);
         const atcommand = formdata.get('atcommand') as string;
         if (atcommand) {
             props.setInput(atcommand);
+            await send_command(atcommand + '\r');
         }
         htmlformelement.reset();
     };
@@ -125,6 +129,20 @@ function Right() {
                 sender: Sender.User,
             },
         ]);
+    });
+
+    createEffect(() => {
+        const length = commandStore.commands.length;
+        const message = commandStore.commands?.[length - 1];
+        if (message) {
+            setMessage((prev) => [
+                ...prev,
+                {
+                    message: message.message,
+                    sender: Sender.System,
+                },
+            ]);
+        }
     });
 
     return (

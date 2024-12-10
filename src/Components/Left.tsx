@@ -1,6 +1,8 @@
-import { createEffect, createSignal, JSXElement } from 'solid-js';
+import { createEffect, createSignal, JSXElement, onCleanup } from 'solid-js';
 import { ThemeSelector } from './Theme';
 import { invoke } from '@tauri-apps/api/core';
+import { listen } from '@tauri-apps/api/event';
+import { send_command } from '../Hooks/Command';
 
 type KardProps = { title: string } & {
     children: JSXElement;
@@ -18,6 +20,7 @@ function Kard(props: KardProps) {
 function PortSelector() {
     const [ports, setAvailablePorts] = createSignal<Array<string>>([]);
     const [selectedport, setSelectedPort] = createSignal(-1);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [connected, setConnected] = createSignal<boolean>(false);
 
     async function getAvailablePorts() {
@@ -25,8 +28,27 @@ function PortSelector() {
         setAvailablePorts(ports);
     }
 
+    async function connect() {
+        await send_command(ports()[selectedport()], 'INIT');
+    }
+
+    async function at() {
+        await send_command('AT\r');
+    }
+
     createEffect(() => {
         getAvailablePorts();
+
+        const unlisten = (async () => {
+            return await listen('atconnection', (event) => {
+                console.log('AT Connection Updated', event);
+            });
+        })();
+
+        onCleanup(async () => {
+            const u = await unlisten;
+            u();
+        });
     });
 
     return (
@@ -45,7 +67,9 @@ function PortSelector() {
                 <div class='flex justify-between gap-2 mt-4'>
                     <button
                         disabled={selectedport() < 0}
-                        class='btn btn-success flex-1'>
+                        class='btn btn-success flex-1'
+                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                        onClick={connect}>
                         Connect
                     </button>
 
@@ -55,6 +79,12 @@ function PortSelector() {
                         Disconnect
                     </button>
                 </div>
+                <button
+                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    onClick={at}
+                    class='btn btn-error flex-1'>
+                    AT
+                </button>
             </Kard>
         </div>
     );

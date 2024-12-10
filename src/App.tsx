@@ -3,8 +3,13 @@ import Left from './Components/Left';
 import Main from './Components/Main';
 import Right from './Components/Right';
 import { ThemeContext, createThemeStore } from './Stores/Theme';
+import { at_response_listener } from './Hooks/Command';
+import { createEffect } from 'solid-js';
 
 function App() {
+    createEffect(() => {
+        at_response_listener();
+    });
     const [theme, setTheme] = createThemeStore();
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>

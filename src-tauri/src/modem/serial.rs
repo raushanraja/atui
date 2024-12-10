@@ -1,10 +1,13 @@
 use bytes::BytesMut;
 use futures::{
     stream::{SplitSink, SplitStream},
-    StreamExt,
+    StreamExt, TryFutureExt,
 };
 use tokio_serial::{available_ports, SerialStream};
 use tokio_util::codec::{Decoder, Encoder, Framed};
+use tracing::info;
+
+use crate::commands::serial::AtCommand;
 
 pub struct LineCodec;
 
@@ -62,10 +65,17 @@ pub async fn split_serial(
     framed.split()
 }
 
-pub async fn serial_read_task(mut reader: SplitStream<Framed<SerialStream, LineCodec>>) {
+pub async fn serial_read_task(
+    mut reader: SplitStream<Framed<SerialStream, LineCodec>>,
+    serial_tx: tokio::sync::mpsc::Sender<AtCommand>,
+) {
+    info!("Starting Read:");
     while let Some(line) = reader.next().await {
         match line {
-            Ok(l) => println!("Received: {}", l),
+            Ok(l) => {
+                let _ = serial_tx.send(AtCommand::new_with_string(l.clone())).await;
+                info!("Received: {}", l)
+            }
             Err(e) => println!("Error: {:?}", e),
         }
     }
