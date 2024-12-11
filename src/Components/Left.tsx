@@ -23,6 +23,8 @@ function PortSelector() {
     const [selectedport, setSelectedPort] = createSignal(-1);
 
     const [connected, setConnected] = createSignal<boolean>(false);
+    const title =
+        'Port Selection: ' + connected() ? 'Connected' : 'Disconnected';
 
     async function getAvailablePorts() {
         const ports: Array<string> = await invoke('availableports', {});
@@ -50,7 +52,7 @@ function PortSelector() {
 
     return (
         <div class='bg-base-200 flex-1 rounded-md'>
-            <Kard title='Port Selection : Disconnected'>
+            <Kard title={title}>
                 <select
                     class='select select-bordered w-full'
                     onchange={(e) => setSelectedPort(parseInt(e.target.value))}>
