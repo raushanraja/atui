@@ -15,6 +15,16 @@ This project is a **Work in Progress (WIP)** and actively under development. Con
 
 This template should help get you started developing with Tauri, Solid and Typescript in Vite.
 
+## Screenshots
+
+### Connecting
+
+![Connect](./assets/connect.png)
+
+### Send ATI Command
+
+![ATI Command Output](./assets/run_ati.png)
+
 ## Recommended IDE Setup
 
 - [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
@@ -32,4 +42,5 @@ For Desktop development, run:
 For Android development, run:
 
 - pnpm tauri android dev
+
 # atui
