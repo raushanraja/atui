@@ -13,8 +13,6 @@
 
 This project is a **Work in Progress (WIP)** and actively under development. Contributions and feedback are welcome!
 
-This template should help get you started developing with Tauri, Solid and Typescript in Vite.
-
 ## Screenshots
 
 ### Connecting
