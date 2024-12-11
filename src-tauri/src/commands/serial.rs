@@ -1,15 +1,11 @@
 use serde::{Deserialize, Serialize};
-use tauri::{Emitter, Listener, Manager};
+use tauri::{Emitter, Manager};
 use tokio::sync::{mpsc, Mutex};
 use tracing::info;
 
-use futures::{
-    sink,
-    stream::{self, SplitSink, SplitStream},
-    SinkExt, StreamExt,
-};
-use tokio_serial::{available_ports, SerialPortBuilderExt, SerialStream};
-use tokio_util::codec::{Decoder, Encoder, Framed};
+use futures::{sink, stream::SplitSink, SinkExt};
+use tokio_serial::{SerialPortBuilderExt, SerialStream};
+use tokio_util::codec::Framed;
 
 use crate::modem::serial::{serial_read_task, split_serial, LineCodec};
 
@@ -17,6 +13,8 @@ use crate::modem::serial::{serial_read_task, split_serial, LineCodec};
 pub enum CMDType {
     INIT,
     CMD,
+    DINIT,
+    RESPONSE,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,11 +25,11 @@ pub struct AtCommand {
 }
 
 impl AtCommand {
-    pub fn new_with_string(message: String) -> Self {
+    pub fn new_with_string(message: String, id: Option<String>, cmdtype: CMDType) -> Self {
         Self {
             message,
-            id: "NONE".to_string(),
-            cmdtype: CMDType::CMD,
+            id: id.unwrap_or(uuid::Uuid::now_v7().to_string()),
+            cmdtype,
         }
     }
 }
@@ -41,7 +39,6 @@ pub struct AsyncProcInputTx {
     pub serial_tx: Mutex<mpsc::Sender<AtCommand>>,
     pub connected: Mutex<bool>,
     pub ssink: Mutex<Option<SplitSink<Framed<SerialStream, LineCodec>, String>>>,
-    pub sstream: Mutex<Option<SplitStream<Framed<SerialStream, LineCodec>>>>,
 }
 
 #[tauri::command]
@@ -78,11 +75,28 @@ pub async fn send_at_command(
                     });
                 }
             }
+            let _ = async_proc_input_tx
+                .send(command)
+                .await
+                .map_err(|e| e.to_string());
+        }
+        CMDType::DINIT => {
+            let mut ssink = state.ssink.lock().await;
+            let mut connected = state.connected.lock().await;
+
+            if ssink.is_some() {
+                info!("Disconnection Called");
+                *connected = false;
+                let _ = ssink.as_mut().unwrap().close().await;
+                *ssink = None;
+            }
+
+            info!("Disconnection Completed");
         }
         CMDType::CMD => {
             info!("COMMAND");
             let mut ssink = state.ssink.lock().await;
-            if (ssink.is_some()) {
+            if ssink.is_some() {
                 let _ = ssink.as_mut().unwrap().send(command.message.clone()).await;
             }
             let _ = async_proc_input_tx
@@ -90,6 +104,7 @@ pub async fn send_at_command(
                 .await
                 .map_err(|e| e.to_string());
         }
+        _ => (),
     }
 
     Ok(())
@@ -151,14 +166,13 @@ async fn process_serial_read(
 }
 
 fn at_response_reply<R: tauri::Runtime>(message: AtCommand, manager: &impl Manager<R>) {
-    info!(?message.message, "atresponse");
+    info!(?message, "atresponse");
     let response = serde_json::to_string(&message).unwrap();
 
     match message.cmdtype {
-        CMDType::INIT => manager
-            .app_handle()
-            .emit("ATConnect", message.message)
-            .unwrap(),
-        CMDType::CMD => manager.app_handle().emit("atresponse", response).unwrap(),
+        CMDType::INIT => manager.app_handle().emit("ATConnect", true).unwrap(),
+        CMDType::DINIT => manager.app_handle().emit("ATConnect", false).unwrap(),
+        CMDType::RESPONSE => manager.app_handle().emit("atresponse", response).unwrap(),
+        CMDType::CMD => (),
     }
 }

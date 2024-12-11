@@ -1,0 +1,104 @@
+{
+    "GeneralCommands": {
+        "ATI": {
+            "Description": "Display MT Identification Information",
+            "Read": true
+        },
+        "AT+GMI": {
+            "Description": "Request Manufacturer Identification",
+            "Read": true
+        },
+        "AT+GMM": {
+            "Description": "Request MT Model Identification",
+            "Read": true
+        },
+        "AT+GMR": {
+            "Description": "Request MT Firmware Revision Identification",
+            "Read": true
+        },
+        "AT+CGMI": {
+            "Description": "Request Manufacturer Identification",
+            "Read": true
+        },
+        "AT+CGMM": {
+            "Description": "Request MT Model Identification",
+            "Read": true
+        },
+        "AT+CGMR": {
+            "Description": "Request MT Firmware Revision Identification",
+            "Read": true
+        },
+        "AT+GSN": {
+            "Description": "Request International Mobile Equipment Identity (IMEI)",
+            "Read": true
+        },
+        "AT+CGSN": {
+            "Description": "Request International Mobile Equipment Identity (IMEI)",
+            "Read": true
+        },
+        "AT&F": {
+            "Description": "Reset AT Command Settings to Factory Settings",
+            "Read": false
+        },
+        "AT&V": {
+            "Description": "Display Current Configurations",
+            "Read": true
+        },
+        "AT&W": {
+            "Description": "Store Current Settings to User-defined Profile",
+            "Read": false
+        },
+        "ATZ": {
+            "Description": "Restore All AT Command Settings From User-defined Profile",
+            "Read": false
+        },
+        "ATQ": {
+            "Description": "Set Result Code Presentation Mode",
+            "Read": false
+        },
+        "ATV": {
+            "Description": "MT Response Format",
+            "Read": false
+        },
+        "ATE": {
+            "Description": "Set Command Echo Mode",
+            "Read": false
+        },
+        "A/": {
+            "Description": "Repeat Previous Command Line",
+            "Read": true
+        },
+        "ATS3": {
+            "Description": "Set Command Line Termination Character",
+            "Read": false
+        },
+        "ATS4": {
+            "Description": "Set Response Formatting Character",
+            "Read": false
+        },
+        "ATS5": {
+            "Description": "Set Command Line Editing Character",
+            "Read": false
+        },
+        "ATX": {
+            "Description": "Set CONNECT Result Code Format and Monitor Call Progress",
+            "Read": false
+        },
+        "AT+CFUN": {
+            "Description": "Set UE Functionality",
+            "Read": false
+        },
+        "AT+CMEE": {
+            "Description": "Error Message Format",
+            "Read": false
+        },
+        "AT+CSCS": {
+            "Description": "Select TE Character Set",
+            "Read": false
+        },
+        "AT+QURCCFG": {
+            "Description": "Configure URC Indication Option",
+            "Read": false
+        }
+    }
+}

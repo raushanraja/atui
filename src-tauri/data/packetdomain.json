@@ -1,0 +1,39 @@
+{
+    "PacketDomainCommands": [
+        {
+            "Command": "AT+CGATT",
+            "Description": "Attachment or Detachment of PS"
+        },
+        {
+            "Command": "AT+CGQREQ",
+            "Description": "Quality of Service Profile (Requested)"
+        },
+        {
+            "Command": "AT+CGQMIN",
+            "Description": "Quality of Service Profile (Minimum Acceptable)"
+        },
+        {
+            "Command": "AT+CGACT",
+            "Description": "Activate or Deactivate PDP Contexts"
+        },
+        { "Command": "AT+CGDATA", "Description": "Enter Data State" },
+        { "Command": "AT+CGPADDR", "Description": "Show PDP Addresses" },
+        { "Command": "AT+CGEREP", "Description": "Report Packet Domain Event" },
+        {
+            "Command": "AT+CGSMS",
+            "Description": "Select Service for MO SMS Messages"
+        },
+        {
+            "Command": "AT+QGDNRCNT",
+            "Description": "5G NR Packet Data Counter"
+        },
+        {
+            "Command": "AT+QAUGDCNT",
+            "Description": "Auto Save Packet Data Counter"
+        },
+        {
+            "Command": "AT+QNETDEVSTATUS",
+            "Description": "Query RmNet Device Status"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "USIMRelatedCommands": [
+        {
+            "Command": "AT+CIMI",
+            "Description": "Request International Mobile Subscriber Identity (IMSI)"
+        },
+        { "Command": "AT+CLCK", "Description": "Facility Lock" },
+        { "Command": "AT+CPIN", "Description": "Enter PIN" },
+        { "Command": "AT+CPWD", "Description": "Change Password" },
+        { "Command": "AT+CSIM", "Description": "Generic (U)SIM Access" },
+        { "Command": "AT+CRSM", "Description": "Restricted (U)SIM Access" },
+        { "Command": "AT+CCHO", "Description": "Open Logical Channel" },
+        { "Command": "AT+CCHC", "Description": "Close Logical Channel" },
+        {
+            "Command": "AT+CGLA",
+            "Description": "Generic UICC Logical Channel Access"
+        },
+        {
+            "Command": "AT+QPINC",
+            "Description": "Display PIN Remainder Counter"
+        },
+        {
+            "Command": "AT+QINISTAT",
+            "Description": "Query Initialization Status of (U)SIM Card"
+        },
+        { "Command": "AT+QSIMDET", "Description": "(U)SIM Card Detection" },
+        {
+            "Command": "AT+QSIMSTAT",
+            "Description": "(U)SIM Card Insertion Status Report"
+        },
+        { "Command": "AT+QUIMSLOT", "Description": "Switch (U)SIM Slot" }
+    ]
+}

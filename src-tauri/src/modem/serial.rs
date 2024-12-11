@@ -1,3 +1,5 @@
+use std::string;
+
 use bytes::BytesMut;
 use futures::{
     stream::{SplitSink, SplitStream},
@@ -7,7 +9,7 @@ use tokio_serial::{available_ports, SerialStream};
 use tokio_util::codec::{Decoder, Encoder, Framed};
 use tracing::info;
 
-use crate::commands::serial::AtCommand;
+use crate::commands::serial::{AtCommand, CMDType};
 
 pub struct LineCodec;
 
@@ -73,10 +75,18 @@ pub async fn serial_read_task(
     while let Some(line) = reader.next().await {
         match line {
             Ok(l) => {
-                let _ = serial_tx.send(AtCommand::new_with_string(l.clone())).await;
+                let _ = serial_tx
+                    .send(AtCommand::new_with_string(
+                        l.clone(),
+                        None,
+                        CMDType::RESPONSE,
+                    ))
+                    .await;
                 info!("Received: {}", l)
             }
             Err(e) => println!("Error: {:?}", e),
         }
     }
+
+    info!("Exiting, closed");
 }

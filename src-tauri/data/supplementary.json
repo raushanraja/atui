@@ -1,0 +1,33 @@
+{
+    "SupplementaryServiceCommands": [
+        {
+            "Command": "AT+CCFC",
+            "Description": "Call Forwarding Number and Conditions Control"
+        },
+        { "Command": "AT+CCWA", "Description": "Call Waiting Control" },
+        {
+            "Command": "AT+CHLD",
+            "Description": "Call Related Supplementary Services"
+        },
+        {
+            "Command": "AT+CLIP",
+            "Description": "Calling Line Identification Presentation"
+        },
+        {
+            "Command": "AT+CLIR",
+            "Description": "Calling Line Identification Restriction"
+        },
+        {
+            "Command": "AT+COLP",
+            "Description": "Connected Line Identification Presentation"
+        },
+        {
+            "Command": "AT+CSSN",
+            "Description": "Supplementary Service Notifications"
+        },
+        {
+            "Command": "AT+CUSD",
+            "Description": "Unstructured Supplementary Service Data"
+        }
+    ]
+}

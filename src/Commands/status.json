@@ -1,0 +1,64 @@
+{
+    "StatusControlCommands": [
+        {
+            "Command": "AT+CPAS",
+            "Description": "Mobile Equipment Activity Status",
+            "Read": true
+        },
+        {
+            "Command": "AT+CEER",
+            "Description": "Extended Error Report",
+            "Read": true
+        },
+        {
+            "Command": "AT+QCFG",
+            "Description": "Extended Configuration Settings",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"hsdpacat\"",
+            "Description": "HSDPA Category Configuration",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"hsupacat\"",
+            "Description": "HSUPA Category Configuration",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"rrc\"",
+            "Description": "RRC Release Version Configuration",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"pdp/duplicatechk\"",
+            "Description": "Establish Multi PDNs With the Same APN",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"risignaltype\"",
+            "Description": "RI Signal Output Carrier",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"data_interface\"",
+            "Description": "Set Network Port/Diagnostic Port Communication via PCIe/USB Interface",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"pcie/mode\"",
+            "Description": "Set PCIe RC/EP Mode",
+            "Read": false
+        },
+        {
+            "Command": "AT+QCFG=\"usbspeed\"",
+            "Description": "Set USB Speed Mode",
+            "Read": false
+        },
+        {
+            "Command": "AT+QINDCFG",
+            "Description": "URC Indication Configuration",
+            "Read": false
+        }
+    ]
+}

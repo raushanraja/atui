@@ -1,0 +1,62 @@
+{
+    "NetworkServiceCommands": [
+        { "Command": "AT+COPS", "Description": "Operator Selection" },
+        { "Command": "AT+CREG", "Description": "Network Registration Status" },
+        {
+            "Command": "AT+CGREG",
+            "Description": "Network Registration Status (Packet Domain)"
+        },
+        {
+            "Command": "AT+CEREG",
+            "Description": "EPS Network Registration Status"
+        },
+        {
+            "Command": "AT+C5GREG",
+            "Description": "5GS Network Registration Status"
+        },
+        { "Command": "AT+CGDCONT", "Description": "Define PDP Contexts" },
+        {
+            "Command": "AT+CGQREQ",
+            "Description": "Quality of Service Profile (Requested)"
+        },
+        {
+            "Command": "AT+CGQMIN",
+            "Description": "Quality of Service Profile (Minimum Acceptable)"
+        },
+        { "Command": "AT+CSQ", "Description": "Signal Quality Report" },
+        {
+            "Command": "AT+QRSRP",
+            "Description": "Report RSRP (Reference Signal Received Power)"
+        },
+        {
+            "Command": "AT+QRSRQ",
+            "Description": "Report RSRQ (Reference Signal Received Quality)"
+        },
+        {
+            "Command": "AT+QSINR",
+            "Description": "Report SINR (Signal-to-Interference-plus-Noise Ratio)"
+        },
+        { "Command": "AT+CPOL", "Description": "Preferred Operator List" },
+        { "Command": "AT+COPN", "Description": "Read Operator Names" },
+        { "Command": "AT+CTZU", "Description": "Automatic Time Zone Update" },
+        { "Command": "AT+CTZR", "Description": "Time Zone Reporting" },
+        {
+            "Command": "AT+QLTS",
+            "Description": "Obtain the Latest Time Synchronized Through Network"
+        },
+        { "Command": "AT+QNWINFO", "Description": "Query Network Information" },
+        { "Command": "AT+QSPN", "Description": "Query Service Provider Name" },
+        {
+            "Command": "AT+QENG",
+            "Description": "Query Primary Serving Cell and Neighbor Cell Information"
+        },
+        {
+            "Command": "AT+QNWCFG",
+            "Description": "Configure and Query Network Parameters"
+        },
+        {
+            "Command": "AT+QNWPREFCFG",
+            "Description": "Configure Network Searching Preferences"
+        }
+    ]
+}

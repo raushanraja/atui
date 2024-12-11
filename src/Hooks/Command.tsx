@@ -19,8 +19,9 @@ export async function at_response_listener() {
         started_listening = true;
         await listen('atresponse', (event) => {
             const response = JSON.parse(event.payload as string) as ATResponse;
-            console.log(response);
-            addResponse(response);
+            if (response.cmdtype == 'RESPONSE') {
+                addResponse(response);
+            }
         });
     }
 }

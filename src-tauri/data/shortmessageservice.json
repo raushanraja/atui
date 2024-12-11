@@ -1,0 +1,29 @@
+{
+    "ShortMessageServiceCommands": [
+        { "Command": "AT+CSMS", "Description": "Select Message Service" },
+        { "Command": "AT+CMGF", "Description": "Message Format" },
+        { "Command": "AT+CSCA", "Description": "Service Center Address" },
+        { "Command": "AT+CPMS", "Description": "Preferred Message Storage" },
+        { "Command": "AT+CMGD", "Description": "Delete Messages" },
+        { "Command": "AT+CMGL", "Description": "List Messages" },
+        { "Command": "AT+CMGR", "Description": "Read Messages" },
+        { "Command": "AT+CMGS", "Description": "Send Messages" },
+        { "Command": "AT+CMMS", "Description": "Send More Messages" },
+        { "Command": "AT+CMGW", "Description": "Write Messages to Memory" },
+        { "Command": "AT+CMSS", "Description": "Send Messages from Storage" },
+        {
+            "Command": "AT+CNMA",
+            "Description": "New Message Acknowledgement to ME/TA"
+        },
+        {
+            "Command": "AT+CNMI",
+            "Description": "New Message Indications to TE"
+        },
+        {
+            "Command": "AT+CSCB",
+            "Description": "Select Cell Broadcast Message Types"
+        },
+        { "Command": "AT+CSDH", "Description": "Show Text Mode Parameters" },
+        { "Command": "AT+CSMP", "Description": "Set Text Mode Parameters" }
+    ]
+}

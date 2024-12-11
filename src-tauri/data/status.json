@@ -1,0 +1,49 @@
+{
+    "StatusControlCommands": [
+        {
+            "Command": "AT+CPAS",
+            "Description": "Mobile Equipment Activity Status"
+        },
+        { "Command": "AT+CEER", "Description": "Extended Error Report" },
+        {
+            "Command": "AT+QCFG",
+            "Description": "Extended Configuration Settings"
+        },
+        {
+            "Command": "AT+QCFG=\"hsdpacat\"",
+            "Description": "HSDPA Category Configuration"
+        },
+        {
+            "Command": "AT+QCFG=\"hsupacat\"",
+            "Description": "HSUPA Category Configuration"
+        },
+        {
+            "Command": "AT+QCFG=\"rrc\"",
+            "Description": "RRC Release Version Configuration"
+        },
+        {
+            "Command": "AT+QCFG=\"pdp/duplicatechk\"",
+            "Description": "Establish Multi PDNs With the Same APN"
+        },
+        {
+            "Command": "AT+QCFG=\"risignaltype\"",
+            "Description": "RI Signal Output Carrier"
+        },
+        {
+            "Command": "AT+QCFG=\"data_interface\"",
+            "Description": "Set Network Port/Diagnostic Port Communication via PCIe/USB Interface"
+        },
+        {
+            "Command": "AT+QCFG=\"pcie/mode\"",
+            "Description": "Set PCIe RC/EP Mode"
+        },
+        {
+            "Command": "AT+QCFG=\"usbspeed\"",
+            "Description": "Set USB Speed Mode"
+        },
+        {
+            "Command": "AT+QINDCFG",
+            "Description": "URC Indication Configuration"
+        }
+    ]
+}

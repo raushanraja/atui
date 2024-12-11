@@ -1,0 +1,83 @@
+{
+    "GeneralCommands": [
+        {
+            "Command": "ATI",
+            "Description": "Display MT Identification Information"
+        },
+        {
+            "Command": "AT+GMI",
+            "Description": "Request Manufacturer Identification"
+        },
+        {
+            "Command": "AT+GMM",
+            "Description": "Request MT Model Identification"
+        },
+        {
+            "Command": "AT+GMR",
+            "Description": "Request MT Firmware Revision Identification"
+        },
+        {
+            "Command": "AT+CGMI",
+            "Description": "Request Manufacturer Identification"
+        },
+        {
+            "Command": "AT+CGMM",
+            "Description": "Request MT Model Identification"
+        },
+        {
+            "Command": "AT+CGMR",
+            "Description": "Request MT Firmware Revision Identification"
+        },
+        {
+            "Command": "AT+GSN",
+            "Description": "Request International Mobile Equipment Identity (IMEI)"
+        },
+        {
+            "Command": "AT+CGSN",
+            "Description": "Request International Mobile Equipment Identity (IMEI)"
+        },
+        {
+            "Command": "AT&F",
+            "Description": "Reset AT Command Settings to Factory Settings"
+        },
+        { "Command": "AT&V", "Description": "Display Current Configurations" },
+        {
+            "Command": "AT&W",
+            "Description": "Store Current Settings to User-defined Profile"
+        },
+        {
+            "Command": "ATZ",
+            "Description": "Restore All AT Command Settings From User-defined Profile"
+        },
+        {
+            "Command": "ATQ",
+            "Description": "Set Result Code Presentation Mode"
+        },
+        { "Command": "ATV", "Description": "MT Response Format" },
+        { "Command": "ATE", "Description": "Set Command Echo Mode" },
+        { "Command": "A/", "Description": "Repeat Previous Command Line" },
+        {
+            "Command": "ATS3",
+            "Description": "Set Command Line Termination Character"
+        },
+        {
+            "Command": "ATS4",
+            "Description": "Set Response Formatting Character"
+        },
+        {
+            "Command": "ATS5",
+            "Description": "Set Command Line Editing Character"
+        },
+        {
+            "Command": "ATX",
+            "Description": "Set CONNECT Result Code Format and Monitor Call Progress"
+        },
+        { "Command": "AT+CFUN", "Description": "Set UE Functionality" },
+        { "Command": "AT+CMEE", "Description": "Error Message Format" },
+        { "Command": "AT+CSCS", "Description": "Select TE Character Set" },
+        {
+            "Command": "AT+QURCCFG",
+            "Description": "Configure URC Indication Option"
+        }
+    ]
+}

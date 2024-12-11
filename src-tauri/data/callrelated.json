@@ -1,0 +1,44 @@
+{
+    "CallRelatedCommands": [
+        { "Command": "ATA", "Description": "Answer an Incoming Call" },
+        { "Command": "ATD", "Description": "Originate a Call" },
+        { "Command": "ATH", "Description": "Disconnect Existing Connection" },
+        { "Command": "AT+CVHU", "Description": "Voice Hang up Control" },
+        { "Command": "AT+CHUP", "Description": "Hang up Calls" },
+        {
+            "Command": "ATS0",
+            "Description": "Set Number of Rings Before Automatic Answering"
+        },
+        { "Command": "ATS6", "Description": "Set Pause Before Blind Dialing" },
+        {
+            "Command": "ATS7",
+            "Description": "Set Time to Wait for Connection Completion"
+        },
+        {
+            "Command": "ATS8",
+            "Description": "Set the Time to Wait for Comma Dial Modifier"
+        },
+        {
+            "Command": "ATS10",
+            "Description": "Set Disconnection Delay After Indicating the Absence of Data Carrier"
+        },
+        { "Command": "AT+CSTA", "Description": "Select Type of Address" },
+        { "Command": "AT+CLCC", "Description": "List Current Calls of MT" },
+        { "Command": "AT+CR", "Description": "Service Reporting Control" },
+        {
+            "Command": "AT+CRC",
+            "Description": "Set Extended Format of Incoming Call Indication"
+        },
+        {
+            "Command": "AT+CRLP",
+            "Description": "Select Radio Link Protocol Parameter"
+        },
+        {
+            "Command": "AT+QECCNUM",
+            "Description": "Configure Emergency Call Numbers"
+        },
+        { "Command": "AT^DSCI", "Description": "Call Status Indication" },
+        { "Command": "AT+VTS", "Description": "DTMF and Tone Generation" },
+        { "Command": "AT+VTD", "Description": "Set Tone Duration" }
+    ]
+}

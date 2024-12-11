@@ -39,7 +39,6 @@ pub fn run() {
             serial_tx: Mutex::new(serial_tx.clone()),
             connected: Mutex::new(false),
             ssink: Mutex::new(None),
-            sstream: Mutex::new(None),
         })
         .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![

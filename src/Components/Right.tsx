@@ -25,7 +25,11 @@ type CommandInputPorps = {
 function System(message: Message) {
     return (
         <div class='chat chat-start mx-2'>
-            <div class='chat-bubble'>{message.message}</div>
+            <div class='chat-bubble'>
+                {message.message.split('\r\n').map((str) => (
+                    <p>{str}</p>
+                ))}
+            </div>
             <div class='chat-footer opacity-50'>System</div>
         </div>
     );
@@ -34,7 +38,11 @@ function System(message: Message) {
 function User(message: Message) {
     return (
         <div class='chat chat-end mx-2'>
-            <div class='chat-bubble'>{message.message}</div>
+            <div class='chat-bubble'>
+                {message.message.split('\r\n').map((str) => (
+                    <p>{str}</p>
+                ))}
+            </div>
             <div class='chat-footer opacity-50'>User</div>
         </div>
     );
@@ -132,8 +140,8 @@ function Right() {
     });
 
     createEffect(() => {
-        const length = commandStore.commands.length;
-        const message = commandStore.commands?.[length - 1];
+        const length = commandStore.responses.length;
+        const message = commandStore.responses?.[length - 1];
         if (message) {
             setMessage((prev) => [
                 ...prev,

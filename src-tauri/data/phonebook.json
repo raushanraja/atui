@@ -1,0 +1,12 @@
+{
+    "PhonebookCommands": [
+        { "Command": "AT+CNUM", "Description": "Subscriber Number" },
+        { "Command": "AT+CPBF", "Description": "Find Phonebook Entries" },
+        { "Command": "AT+CPBR", "Description": "Read Phonebook Entries" },
+        {
+            "Command": "AT+CPBS",
+            "Description": "Select Phonebook Memory Storage"
+        },
+        { "Command": "AT+CPBW", "Description": "Write Phonebook Entry" }
+    ]
+}

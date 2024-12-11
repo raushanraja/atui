@@ -1,4 +1,5 @@
-import { createEffect, createSignal, JSXElement, onCleanup } from 'solid-js';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { createEffect, createSignal, JSXElement } from 'solid-js';
 import { ThemeSelector } from './Theme';
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
@@ -20,7 +21,7 @@ function Kard(props: KardProps) {
 function PortSelector() {
     const [ports, setAvailablePorts] = createSignal<Array<string>>([]);
     const [selectedport, setSelectedPort] = createSignal(-1);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const [connected, setConnected] = createSignal<boolean>(false);
 
     async function getAvailablePorts() {
@@ -32,22 +33,18 @@ function PortSelector() {
         await send_command(ports()[selectedport()], 'INIT');
     }
 
+    async function disconnect() {
+        await send_command(ports()[selectedport()], 'DINIT');
+    }
+
     async function at() {
         await send_command('AT\r');
     }
 
     createEffect(() => {
         getAvailablePorts();
-
-        const unlisten = (async () => {
-            return await listen('atconnection', (event) => {
-                console.log('AT Connection Updated', event);
-            });
-        })();
-
-        onCleanup(async () => {
-            const u = await unlisten;
-            u();
+        listen('ATConnect', (event) => {
+            setConnected(event.payload as boolean);
         });
     });
 
@@ -64,26 +61,26 @@ function PortSelector() {
                         return <option value={index}>{p}</option>;
                     })}
                 </select>
-                <div class='flex justify-between gap-2 mt-4'>
+                <div class='flex justify-between gap-2 my-4'>
                     <button
                         disabled={selectedport() < 0}
                         class='btn btn-success flex-1'
-                        // eslint-disable-next-line @typescript-eslint/no-misused-promises
                         onClick={connect}>
                         Connect
                     </button>
 
                     <button
                         disabled={!connected()}
-                        class='btn btn-error flex-1'>
+                        class='btn btn-error flex-1'
+                        onClick={disconnect}>
                         Disconnect
                     </button>
                 </div>
                 <button
-                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    disabled={!connected()}
                     onClick={at}
-                    class='btn btn-error flex-1'>
-                    AT
+                    class='btn btn-error flex-1 w-full'>
+                    AT Test Command
                 </button>
             </Kard>
         </div>

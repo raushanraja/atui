@@ -1,0 +1,52 @@
+{
+    "HardwareRelatedCommands": [
+        { "Command": "AT+QPOWD", "Description": "Power off" },
+        { "Command": "AT+CCLK", "Description": "Clock" },
+        { "Command": "AT+QADC", "Description": "Read ADC Value" },
+        { "Command": "AT+QSCLK", "Description": "Configure Sleep Mode" },
+        {
+            "Command": "AT+QAGPIO",
+            "Description": "Set Output Level of AP or PMU GPIO"
+        },
+        {
+            "Command": "AT+QMAP",
+            "Description": "Configure QMAP Related Parameters"
+        },
+        {
+            "Command": "AT+QMAP=\"LANIP\"",
+            "Description": "Query/Modify DHCP Address Pool of the Default LAN Interface"
+        },
+        {
+            "Command": "AT+QMAP=\"vlan\"",
+            "Description": "Query/Configure VLAN"
+        },
+        {
+            "Command": "AT+QMAP=\"mPDN_rule\"",
+            "Description": "Query/Modify mPDN VLAN Mapping Rule"
+        },
+        {
+            "Command": "AT+QMAP=\"auto_connect\"",
+            "Description": "Query/Modify Automatic Data Backhaul Connectivity"
+        },
+        {
+            "Command": "AT+QMAP=\"mPDN_status\"",
+            "Description": "Query mPDN Status"
+        },
+        {
+            "Command": "AT+QMAP=\"sfe\"",
+            "Description": "Query/Configure SFE Software Acceleration"
+        },
+        {
+            "Command": "AT+QMAP=\"domain\"",
+            "Description": "Query/Configure Gateway Domain Name"
+        },
+        {
+            "Command": "AT+QMAP=\"dhcpv6dns\"",
+            "Description": "Query/Configure IPv6 DNS"
+        },
+        {
+            "Command": "AT+QGETCAPABILITY",
+            "Description": "Get Band and LTE UE-Category Supported by UE"
+        }
+    ]
+}
