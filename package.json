@@ -8,7 +8,9 @@
         "dev": "vite --host",
         "build": "pnpm eslint && vite build",
         "serve": "vite preview --host",
-        "tauri": "tauri"
+        "tauri": "tauri",
+        "prettier": "prettier src -w",
+        "lint": "eslint src --fix"
     },
     "license": "MIT",
     "dependencies": {
