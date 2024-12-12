@@ -98,7 +98,7 @@ function DeviceStatus() {
 
     return (
         <div class='bg-base-200 flex-1 rounded-md'>
-            <Kard title='Device Status'>
+            <Kard title='Device Info'>
                 <div class='stats stats-vertical shadow w-full h-full'>
                     <div class='stat'>
                         <div class='stat-title'>Manufacturer</div>
