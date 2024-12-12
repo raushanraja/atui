@@ -13,6 +13,11 @@
 
 This project is a **Work in Progress (WIP)** and actively under development. Contributions and feedback are welcome!
 
+
+## ToDo:
+- [ ] Add some sort of AT Reply-Response Mock for testing
+    - Helps with testing the UI without needing to connect to a device as sometime it needs root access
+
 ## Screenshots
 
 ### Connecting
@@ -42,3 +47,5 @@ For Android development, run:
 - pnpm tauri android dev
 
 # atui
+
+

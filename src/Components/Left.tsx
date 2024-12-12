@@ -4,6 +4,7 @@ import { ThemeSelector } from './Theme';
 import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { send_command } from '../Hooks/Command';
+import { commandStore } from '../Stores/Command';
 
 type KardProps = { title: string } & {
     children: JSXElement;
@@ -47,6 +48,9 @@ function PortSelector() {
         getAvailablePorts();
         listen('ATConnect', (event) => {
             setConnected(event.payload as boolean);
+            setTimeout(() => {
+                send_command('ATI\r', 'CMD', true);
+            }, 1000);
         });
     });
 
@@ -90,10 +94,26 @@ function PortSelector() {
 }
 
 function DeviceStatus() {
+    const deviceInfo = commandStore.deviceInfo;
+
     return (
         <div class='bg-base-200 flex-1 rounded-md'>
             <Kard title='Device Status'>
-                <div> TODO </div>
+                <div class='stats stats-vertical shadow w-full h-full'>
+                    <div class='stat'>
+                        <div class='stat-title'>Manufacturer</div>
+                        <div class='stat-value'>{deviceInfo.manufacturer}</div>
+                    </div>
+                    <div class='stat'>
+                        <div class='stat-title'>Model</div>
+                        <div class='stat-value'>{deviceInfo.model}</div>
+                    </div>
+
+                    <div class='stat'>
+                        <div class='stat-title'>Revision</div>
+                        <div class='stat-value'>{deviceInfo.revision}</div>
+                    </div>
+                </div>
             </Kard>
         </div>
     );

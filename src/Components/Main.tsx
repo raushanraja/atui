@@ -1,4 +1,5 @@
 import { Switch, Match, createSignal } from 'solid-js';
+
 import { GeneralCommand } from './Command/General';
 import { StatusCommand } from './Command/Status';
 

@@ -6,7 +6,7 @@
     "scripts": {
         "start": "vite",
         "dev": "vite --host",
-        "build": "pnpm eslint && vite build",
+        "build": "prettier src -w && pnpm eslint src --fix && vite build",
         "serve": "vite preview --host",
         "tauri": "tauri",
         "prettier": "prettier src -w",
