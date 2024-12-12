@@ -1,0 +1,25 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   README.md
+#	modified:   package.json
+#	modified:   src/Components/Left.tsx
+#	modified:   src/Components/Main.tsx
+#	modified:   src/Hooks/Command.tsx
+#	modified:   src/Stores/Command.tsx
+#	new file:   src/Utils/Parsers/ATI.tsx
+#
+feat: add AT command parsing and device info display
+
+- Added a new section in README.md for ToDo items.
+- Updated build script in package.json to include Prettier.
+- Enhanced PortSelector to send 'ATI' command after connection.
+- Implemented DeviceStatus component to display device information.
+- Modified send_command to support parsing responses.
+- Added ATI parser to extract device info from AT command responses.
+- Updated Command store to manage device info and command parsing.

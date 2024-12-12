@@ -102,16 +102,22 @@ function DeviceStatus() {
                 <div class='stats stats-vertical shadow w-full h-full'>
                     <div class='stat'>
                         <div class='stat-title'>Manufacturer</div>
-                        <div class='stat-value'>{deviceInfo.manufacturer}</div>
+                        <div class='stat-value text-sm text-wrap'>
+                            {deviceInfo.manufacturer}
+                        </div>
                     </div>
                     <div class='stat'>
                         <div class='stat-title'>Model</div>
-                        <div class='stat-value'>{deviceInfo.model}</div>
+                        <div class='stat-value text-sm text-wrap'>
+                            {deviceInfo.model}
+                        </div>
                     </div>
 
                     <div class='stat'>
                         <div class='stat-title'>Revision</div>
-                        <div class='stat-value'>{deviceInfo.revision}</div>
+                        <div class='stat-value text-sm text-wrap'>
+                            {deviceInfo.revision}
+                        </div>
                     </div>
                 </div>
             </Kard>

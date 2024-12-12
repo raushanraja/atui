@@ -11,8 +11,9 @@ export interface ATI {
 
 export function parseATI(response: ATResponse): ATI {
     const data = response.message.split('\n');
+    console.log('ATI Data:', data);
 
-    if (data.length != 3) {
+    if (data.length < 3) {
         console.error('Invalid ATI Response data');
         return {
             manufacturer: '',
@@ -23,7 +24,10 @@ export function parseATI(response: ATResponse): ATI {
 
     const manufacturer = data[0].trim();
     const model = data[1].trim();
-    const revision = data[2].trim();
+    const revision = data[2]
+        .replace(/[rR]evision/, '')
+        .replace(':', '')
+        .trim();
 
     const result: ATI = {
         manufacturer,
