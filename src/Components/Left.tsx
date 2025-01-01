@@ -5,6 +5,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { send_command } from '../Hooks/Command';
 import { commandStore } from '../Stores/Command';
+import toast from 'solid-toast';
 
 type KardProps = { title: string } & {
     children: JSXElement;
@@ -24,8 +25,7 @@ function PortSelector() {
     const [selectedport, setSelectedPort] = createSignal(-1);
 
     const [connected, setConnected] = createSignal<boolean>(false);
-    const title =
-        'Port Selection: ' + connected() ? 'Connected' : 'Disconnected';
+    const title = 'Port Selection: ' + connected() ? 'Connected' : 'Disconnected';
 
     async function getAvailablePorts() {
         const ports: Array<string> = await invoke('availableports', {});
@@ -33,7 +33,11 @@ function PortSelector() {
     }
 
     async function connect() {
-        await send_command(ports()[selectedport()], 'INIT');
+        try {
+            await send_command(ports()[selectedport()], 'INIT');
+        } catch (e) {
+            toast.error(e as string, { duration: 5000 });
+        }
     }
 
     async function disconnect() {

@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize};
 use tauri::{Emitter, Manager};
 use tokio::sync::{mpsc, Mutex};
-use tracing::info;
+use tracing::{error, info};
 
-use futures::{sink, stream::SplitSink, SinkExt};
+use futures::{stream::SplitSink, SinkExt};
 use tokio_serial::{SerialPortBuilderExt, SerialStream};
 use tokio_util::codec::Framed;
 
@@ -73,6 +73,10 @@ pub async fn send_at_command(
                     tauri::async_runtime::spawn(async move {
                         serial_read_task(stream, serial_tx).await
                     });
+                } else {
+                    error!("Failed to open serial port");
+                    *connected = false;
+                    return Err("Failed to open serial port".to_string());
                 }
             }
             let _ = async_proc_input_tx
@@ -115,7 +119,7 @@ pub fn setup_serial_async_task(
     async_proc_input_rx: tokio::sync::mpsc::Receiver<AtCommand>,
     async_proc_output_tx: tokio::sync::mpsc::Sender<AtCommand>,
     mut async_proc_output_rx: tokio::sync::mpsc::Receiver<AtCommand>,
-    mut serial_rx: tokio::sync::mpsc::Receiver<AtCommand>,
+    serial_rx: tokio::sync::mpsc::Receiver<AtCommand>,
 ) -> tauri::Result<()> {
     info!("SetupApp");
     let serial_output_sender = async_proc_output_tx.clone();
