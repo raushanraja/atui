@@ -17,6 +17,7 @@ This project is a **Work in Progress (WIP)** and actively under development. Con
 ## ToDo:
 - [ ] Add some sort of AT Reply-Response Mock for testing
     - Helps with testing the UI without needing to connect to a device as sometime it needs root access
+- [ ] Add input boxes to the UI for AT commands that require additional input. 
 
 ## Screenshots
 
