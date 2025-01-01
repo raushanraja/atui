@@ -1,9 +1,7 @@
-use std::string;
-
 use bytes::BytesMut;
 use futures::{
     stream::{SplitSink, SplitStream},
-    StreamExt, TryFutureExt,
+    StreamExt,
 };
 use tokio_serial::{available_ports, SerialStream};
 use tokio_util::codec::{Decoder, Encoder, Framed};
@@ -74,15 +72,15 @@ pub async fn serial_read_task(
     info!("Starting Read:");
     while let Some(line) = reader.next().await {
         match line {
-            Ok(l) => {
+            Ok(line) => {
                 let _ = serial_tx
                     .send(AtCommand::new_with_string(
-                        l.clone(),
+                        line.clone(),
                         None,
                         CMDType::RESPONSE,
                     ))
                     .await;
-                info!("Received: {}", l)
+                info!("Received: {}", line)
             }
             Err(e) => println!("Error: {:?}", e),
         }

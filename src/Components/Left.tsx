@@ -25,7 +25,8 @@ function PortSelector() {
     const [selectedport, setSelectedPort] = createSignal(-1);
 
     const [connected, setConnected] = createSignal<boolean>(false);
-    const title = 'Port Selection: ' + connected() ? 'Connected' : 'Disconnected';
+    const title =
+        'Port Selection: ' + connected() ? 'Connected' : 'Disconnected';
 
     async function getAvailablePorts() {
         const ports: Array<string> = await invoke('availableports', {});

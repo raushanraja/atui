@@ -2,6 +2,7 @@ import { Switch, Match, createSignal } from 'solid-js';
 
 import { GeneralCommand } from './Command/General';
 import { StatusCommand } from './Command/Status';
+import { USimCommand } from './Command/USim';
 
 const tabs = [
     'General',
@@ -44,7 +45,7 @@ function Main() {
                         <StatusCommand />
                     </Match>
                     <Match when={activeTab() == tabs[2]}>
-                        <div> {tabs[2]} </div>
+                        <USimCommand />
                     </Match>
                     <Match when={activeTab() == tabs[3]}>
                         <div> {tabs[3]} </div>

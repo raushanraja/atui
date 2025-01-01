@@ -59,11 +59,11 @@ pub async fn send_at_command(
     match command.cmdtype {
         CMDType::INIT => {
             info!("INIT");
-            let mut connected = state.connected.lock().await;
+            let baudrate = 9600;
+            let port = command.message.clone();
             let serial_tx = state.serial_tx.lock().await.clone();
             let mut ssink = state.ssink.lock().await;
-            let port = command.message.clone();
-            let baudrate = 9600;
+            let mut connected = state.connected.lock().await;
 
             if !*connected {
                 *connected = true;

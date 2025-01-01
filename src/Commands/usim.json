@@ -1,0 +1,74 @@
+{
+    "USIMRelatedCommands": {
+        "AT+CIMI": {
+            "Command": "AT+CIMI",
+            "Read": true,
+            "Description": "Request International Mobile Subscriber Identity (IMSI)"
+        },
+        "AT+CLCK": {
+            "Command": "AT+CLCK",
+            "Read": false,
+            "Description": "Facility Lock"
+        },
+        "AT+CPIN": {
+            "Command": "AT+CPIN",
+            "Read": false,
+            "Description": "Enter PIN"
+        },
+        "AT+CPWD": {
+            "Command": "AT+CPWD",
+            "Read": false,
+            "Description": "Change Password"
+        },
+        "AT+CSIM": {
+            "Command": "AT+CSIM",
+            "Read": false,
+            "Description": "Generic (U)SIM Access"
+        },
+        "AT+CRSM": {
+            "Command": "AT+CRSM",
+            "Read": false,
+            "Description": "Restricted (U)SIM Access"
+        },
+        "AT+CCHO": {
+            "Command": "AT+CCHO",
+            "Read": false,
+            "Description": "Open Logical Channel"
+        },
+        "AT+CCHC": {
+            "Command": "AT+CCHC",
+            "Read": false,
+            "Description": "Close Logical Channel"
+        },
+        "AT+CGLA": {
+            "Command": "AT+CGLA",
+            "Read": false,
+            "Description": "Generic UICC Logical Channel Access"
+        },
+        "AT+QPINC": {
+            "Command": "AT+QPINC",
+            "Read": false,
+            "Description": "Display PIN Remainder Counter"
+        },
+        "AT+QINISTAT": {
+            "Command": "AT+QINISTAT",
+            "Read": true,
+            "Description": "Query Initialization Status of (U)SIM Card"
+        },
+        "AT+QSIMDET": {
+            "Command": "AT+QSIMDET",
+            "Read": false,
+            "Description": "(U)SIM Card Detection"
+        },
+        "AT+QSIMSTAT": {
+            "Command": "AT+QSIMSTAT",
+            "Read": false,
+            "Description": "(U)SIM Card Insertion Status Report"
+        },
+        "AT+QUIMSLOT": {
+            "Command": "AT+QUIMSLOT",
+            "Read": false,
+            "Description": "Switch (U)SIM Slot"
+        }
+    }
+}
