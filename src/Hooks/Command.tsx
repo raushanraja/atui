@@ -11,6 +11,8 @@ import {
 } from '../Stores/Command';
 import { parseATI } from '../Utils/Parsers/ATI';
 import { DEBUG } from '../Utils/Constants';
+import { deviceStatusStore, updatedInit } from '../Stores/DeviceStatus';
+import toast from 'solid-toast';
 
 let started_listening = false;
 export async function send_command(
@@ -23,15 +25,26 @@ export async function send_command(
         return;
     }
 
-    const command = {
-        message: message,
-        id: v7(),
-        cmdtype: type,
-        should_parse,
-    };
-    removeLastCommand();
-    addCommand(command);
-    await invoke('send_at_command', { command: command });
+    console.log('Message:', message);
+
+    if (
+        message == 'ATI\r' ||
+        type == 'INIT' ||
+        message == 'AT\r' ||
+        deviceStatusStore.initialized
+    ) {
+        const command = {
+            message: message,
+            id: v7(),
+            cmdtype: type,
+            should_parse,
+        };
+        removeLastCommand();
+        addCommand(command);
+        await invoke('send_at_command', { command: command });
+    } else {
+        toast.error('Device not initialized', { duration: 5000 });
+    }
 }
 
 export async function send_command_mock(message: string) {
@@ -60,6 +73,7 @@ export async function at_response_listener() {
                     ) {
                         if (lastCommand.message.includes('ATI')) {
                             console.log('ATI Response  Should parse');
+                            updatedInit(true);
                             setDeviceInfo(parseATI(response));
                         }
                     }
