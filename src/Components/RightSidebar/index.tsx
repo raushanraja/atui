@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { createEffect, createSignal, onCleanup, Setter } from 'solid-js';
 import { IoSendOutline } from 'solid-icons/io';
-import { commandStore } from '../Stores/Command';
-import { send_command } from '../Hooks/Command';
+import { commandStore } from '../../Stores/Command';
+import { send_command } from '../../Hooks/Command';
 
 enum Sender {
     'System',
@@ -116,7 +116,7 @@ function CommandInput(props: CommandInputPorps) {
     );
 }
 
-function Right() {
+function RightSidebar() {
     const [input, setInput] = createSignal('');
     const [messages, setMessage] = createSignal<Array<Message>>([
         {
@@ -161,4 +161,4 @@ function Right() {
     );
 }
 
-export default Right;
+export default RightSidebar;

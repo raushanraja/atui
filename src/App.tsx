@@ -1,11 +1,11 @@
 import './App.css';
-import Left from './Components/Left';
+import LeftSidebar from './Components/LeftSidebar';
 import Main from './Components/Main';
-import Right from './Components/Right';
 import { ThemeContext, createThemeStore } from './Stores/Theme';
 import { at_response_listener } from './Hooks/Command';
 import { createEffect } from 'solid-js';
 import { Toaster } from 'solid-toast';
+import RightSidebar from './Components/RightSidebar';
 
 function App() {
     createEffect(() => {
@@ -16,9 +16,9 @@ function App() {
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <Toaster />
             <div class='h-screen grid grid-cols-12 gap-4 p-4'>
-                <Left />
+                <LeftSidebar />
                 <Main />
-                <Right />
+                <RightSidebar />
             </div>
         </ThemeContext.Provider>
     );
