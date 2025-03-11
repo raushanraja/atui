@@ -11,7 +11,6 @@ export interface ATI {
 
 export function parseATI(response: ATResponse): ATI {
     const data = response.message.split('\n');
-    console.log('ATI Data:', data);
 
     if (data.length < 3) {
         console.error('Invalid ATI Response data');
