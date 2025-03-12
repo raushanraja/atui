@@ -50,3 +50,62 @@ For Android development, run:
 # atui
 
 
+```mermaid
+
+stateDiagram-v2
+[*] --> Start
+
+Start --> CommandHandler : Add Command Handler
+Start --> InitAsyncTasks : Init 3 Async Tasks
+CommandHandler --> WaitFor_FE_Input
+
+state InitAsyncTasks {
+    [*] --> FE_Request
+    [*] --> FE_Response
+    [*] --> Serial_Read
+    FE_Request --> FE_Request: MPSC 
+    FE_Response --> FE_Response: MPSC 
+    Serial_Read --> Serial_Read: MPSC
+}
+
+state CommandType {
+    [*] --> INIT
+    [*] --> DINIT
+    [*] --> COMMAND
+    INIT --> INITState
+    DINIT --> DINITState
+    COMMAND --> Serial
+}
+
+WaitFor_FE_Input --> CommandType : Receive Command
+CommandType --> Serial
+state Serial {
+    state connected_state <<choice>>
+    [*] --> connected_state: Connected
+    connected_state --> SendCommand: Yes 
+    connected_state --> Return: No 
+    SendCommand --> SerialSink 
+    SendCommand --> [*]: FE_ResponseMPSC
+    SerialSink --> [*]
+}
+
+state INITState {
+    state connected_ <<choice>>
+    [*] --> connected_ : Connected
+    connected_ --> [*]: Yes (FE_ResponseMPSC)
+    connected_ --> Connect: NO 
+    Connect --> [*]
+}
+
+
+state DINITState {
+    state is_connected <<choice>>
+    [*] --> is_connected : Connected
+    is_connected --> [*]: No  (FE_ResponseMPSC)
+    is_connected --> Disconnect: Yes
+    Disconnect --> [*] 
+}
+
+
+FE_Response--> FE
+```
