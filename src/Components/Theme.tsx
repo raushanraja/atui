@@ -1,5 +1,6 @@
 import { Component, useContext } from 'solid-js';
 import { ThemeContext } from '../Stores/Theme';
+import Kard from './Card';
 const color_themes = ['dim'];
 
 const HorizontalButton: Component = () => {
@@ -17,7 +18,6 @@ const HorizontalButton: Component = () => {
 
 const VerticalButton: Component = () => {
     const { theme, setTheme } = useContext(ThemeContext);
-
     return (
         <button
             onClick={() => {
@@ -32,7 +32,7 @@ const ThemeSelector: Component = () => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     return (
-        <>
+        <Kard title='Theme' classes='h-30'>
             <select
                 class='w-full h-10 select-sm rounded select select-bordered select-primary my-2'
                 onChange={(e: Event) => {
@@ -46,7 +46,7 @@ const ThemeSelector: Component = () => {
                     return <option value={theme}>{theme}</option>;
                 })}
             </select>
-        </>
+        </Kard>
     );
 };
 

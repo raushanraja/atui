@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { createEffect, createSignal } from 'solid-js';
 import { commandStore } from '../../Stores/Command';
 import LogView from './LogView';

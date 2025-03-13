@@ -5,6 +5,7 @@ import toast from 'solid-toast';
 import Kard from '../Card';
 import {
     deviceStatusStore,
+    setDeviceStatusStore,
     updateConnected,
     updatePort,
 } from '../../Stores/DeviceStatus';
@@ -24,6 +25,11 @@ async function connect(port: string) {
 }
 
 async function disconnect(port: string) {
+    setDeviceStatusStore({
+        connected: false,
+        initialized: false,
+        port: deviceStatusStore.port,
+    });
     await send_command(port, 'DINIT');
 }
 

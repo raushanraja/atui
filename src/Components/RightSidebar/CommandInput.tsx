@@ -21,6 +21,7 @@ function CommandInput(props: CommandInputPorps) {
 
     return (
         <div class='row-span-3 p-4 grid gap-4 bg-base-300'>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <form onSubmit={handleChange}>
                 <label class='input input-bordered flex items-center gap-2 mb-4 w-full'>
                     <input
